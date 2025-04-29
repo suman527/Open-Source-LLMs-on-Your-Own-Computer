@@ -1,16 +1,16 @@
 # suman527-Open-Source-LLMs-on-Your-Own-Computer
 
-##Project 1 : Chatbot with Llama 
+## Project 1 : Chatbot with Llama 
 
-###Introduction -  
+### Introduction -  
 
-###Project Objective 
+### Project Objective 
 
 Set up and run the Meta-LLaMA-3.1-8B-Instruct-Q5_K_M.gguf model inside a Docker container using WasmEdge to generate text completions based on input prompts. 
 
  
 
-###Prerequisites 
+### Prerequisites 
 
 Docker installed and running (latest stable version recommended). 
 
@@ -22,7 +22,7 @@ llama-simple.wasm file (the WebAssembly runtime file for inference).
 
  
 
-###Step-by-Step Guide 
+### Step-by-Step Guide 
 
 1. Pull WasmEdge Docker Image 
 
