@@ -1,240 +1,80 @@
 # Open-Source-LLMs-on-Your-Own-Computer
 
-## Project 1 : Chatbot with Llama 
+Building and Deploying a Conversational Chatbot with Meta LLaMA
+This repository presents an end-to-end pipeline for developing a Conversational AI Chatbot using the Meta-LLaMA-3.1-8B-Instruct model. The system is designed for low-resource environments, leverages WebAssembly (WasmEdge) for lightweight deployment, integrates a vector database for retrieval-augmented generation (RAG), and demonstrates fine-tuning for domain-specific knowledge using the Alpaca format.
 
-### Introduction -  
+ ## Project Overview
+The project is divided into three major phases:
 
-### Project Objective 
+## Project 1: LLaMA Deployment using WasmEdge and Docker
+Focus: Model setup, prompt-based inference, and integration with chatbot UI.
 
-Set up and run the Meta-LLaMA-3.1-8B-Instruct-Q5_K_M.gguf model inside a Docker container using WasmEdge to generate text completions based on input prompts. 
+Deployed the Meta-LLaMA-3.1-8B-Instruct-Q5_K_M.gguf model using a WebAssembly runtime (llama-simple.wasm) inside a Docker container powered by WasmEdge.
 
- 
+Ran inference with a command-line prompt to test text generation.
 
-### Prerequisites 
+Configured LobeChat to act as a UI frontend using an OpenAI-compatible local API endpoint.
 
-Docker installed and running (latest stable version recommended). 
+Enabled real-time interaction with the model through a minimalistic chat interface.
 
-WasmEdge installed inside Docker or available through container image. 
+Key tools: Docker, WasmEdge, llama-simple.wasm, Meta-LLaMA-3.1-8B, LobeChat.
 
-LLaMA model files (.gguf) downloaded and placed inside the container or mounted into it. 
+## Project 2: Augmenting the Chatbot with External Knowledge (RAG)
+Focus: Integrating a vector database to enhance factual accuracy.
 
-llama-simple.wasm file (the WebAssembly runtime file for inference). 
+Created a vector store using Qdrant, and ingested external domain-specific data (e.g., chemistry concepts).
 
- 
+Converted structured data (chemistry.csv) into embeddings and stored it in a vector database for similarity search.
 
-### Step-by-Step Guide 
+Developed a RAG API server to respond to user questions by combining retrieval and generation.
 
-#### 1. Pull WasmEdge Docker Image 
+Built a public-facing web chatbot and a Discord bot, both capable of producing informed answers using the vector knowledge base.
 
-bash 
+Submitted screenshots of conversations and vector collection API results for validation.
 
-CopyEdit 
+## Project 3: Fine-Tuning the Model with Domain-Specific Data
+Focus: Specializing the chatbot for political news content.
 
-docker pull wasmedge/wasmedge 
- 
-This pulls the official WasmEdge Docker image. 
+Curated a training dataset (politics.txt) with political news headlines.
 
- 
+Formatted the dataset into Alpaca-style JSON (finetune.json) for instruction tuning.
 
-#### 2. Prepare Necessary Files 
+Uploaded the dataset to Hugging Face Datasets.
 
-Ensure you have: 
+Fine-tuned the model on Google Colab using the Unsloth framework and shared the training notebook.
 
-The model file: Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf 
+Hosted the fine-tuned model on Hugging Face and deployed a public inference API.
 
-The Wasm executable: llama-simple.wasm 
+Demonstrated the effectiveness of fine-tuning through chatbot screenshots and accessible endpoints.
 
-Place these files inside a folder on your host machine (e.g., ~/llama-models). 
+ ## Deliverables and Artifacts
 
-Folder structure: 
+## Component	Link / Info
+🗃️ Dataset (Alpaca-style)	Hugging Face Dataset
+📓 Fine-tuning Notebook	Colab Link
+🌐 Hosted Fine-Tuned Chatbot	Chatbot URL
+📦 Chemistry Vector Snapshot	Included in repo (/snapshots/chemistry.zip)
+🤖 Discord Bot	Invite link and screenshots included in documentation
 
-lua 
+ ## Key Features
+✅ Lightweight deployment using WasmEdge and GGUF quantized LLaMA models.
 
-CopyEdit 
+✅ Interactive chat interface with prompt completion via LobeChat and Discord.
 
-~/llama-models/ 
-    |-- Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf 
-    |-- llama-simple.wasm 
- 
+✅ Knowledge-aware answering using Qdrant-powered RAG APIs.
 
- 
+✅ Fine-tuned model trained on real-world political datasets for improved relevance.
 
-#### 3. Run Docker Container with Mounted Volume 
+✅ API-first design to facilitate flexible front-end integrations.
 
-Use the following command to start a container and mount your llama-models folder inside: 
+## Use Cases
+💬 Education bots that can answer science, history, and current affairs questions.
 
-bash 
+🧪 Research assistants for querying domain-specific databases.
 
-CopyEdit 
+📰 News summarizers or commentators trained on political data.
 
-docker run -it --rm \ 
-  --name llama-wasmedge \ 
-  -v ~/llama-models:/root/llama-models \ 
-  -w /root/llama-models \ 
-  wasmedge/wasmedge bash 
- 
+💻 Offline/local chatbots for low-infrastructure environments (schools, rural areas).
 
-#### Explanation: 
-
--v ~/llama-models:/root/llama-models mounts the folder inside the container. 
-
--w /root/llama-models sets the working directory. 
-
---rm automatically deletes the container after exit. 
-
-You will now be inside the container's bash shell. 
-
- 
-
-#### 4. Install Additional Tools (if needed) 
-
-Inside the container, if not pre-installed, install WasmEdge CLI tools: 
-
-bash 
-
-CopyEdit 
-
-apt update 
-apt install -y wasmedge 
- 
-(Usually, the wasmedge CLI is already available in the image.) 
-
-
-#### 5. Run the Model using WasmEdge 
-
-Inside the container, execute: 
-
-bash 
-
-CopyEdit 
-
-wasmedge --dir .:. \ 
-  --nn-preload default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf \ 
-  llama-simple.wasm \ 
-  --prompt "Robert Oppenheimer's most important achievement is " 
- 
-
-Breakdown of command: 
-
---dir .:. — Allow access to the current directory inside the WebAssembly runtime. 
-
---nn-preload — Preload the model file. 
-
-Syntax: alias:backend:loadType:modelFile 
-
-Example here: default:GGML:AUTO:Meta-Llama-3.1-8B-Instruct-Q5_K_M.gguf 
-
-llama-simple.wasm — The WebAssembly runtime app. 
-
---prompt — The input text to generate a response. 
-
-#### 6. View the Output 
-
-After running the command, the model will process your prompt and output a detailed generated text. 
-
-Example output: 
-
-"Robert Oppenheimer's most important achievement is" 
-
- 
-
- Hugging Face page for model access:  
-
-Directory After Downloading: After downloading the model, you can use the ls -al command to list the downloaded files on your local system. This will show all necessary files for setting up the model. 
-
- 
-Ask a different question in the conversation and A screenshot of the output of the answer.. 
-
- 
-
-Use the Chat Template to Carry a Conversation 
-
-Ask the next question in the conversation. Write it down as a complete command. A screenshot of the output in response to the next question in the conversation. 
-
-  
-
-## Create a Chatbot 
-
-Change the “system prompt” for the chatbot-ui to “What is Mercury” Then, submit the screenshot. Ask a few questions about Japan in chatbot-ui. Submit the screenshots. Configure LobeChat to use the http://localhost:8080/v1 as an "OpenAI API proxy address". Submit the screenshot. Chat on LobeChat. Submit the screenshot. 
-
- 
-
-## Project – 2  
-
-### Add Knowledge to the Chatbot 
-
-#### Create a Vector Database for External Knowledge 
-
-The output of curl 'http://localhost:6333/collections/chemistry' and a zip file containing the snapshot from the chemistry collection. 
-
-Screenshot from 2024-11-28 12-24-57Improve the Vector Collection for Longer Context Windows 
-
-The chemistry.csv file you generated. The output of curl 'http://localhost:6333/collections/chemistry'. A zip file containing the snapshot from the chemistry collection. 
-
-Screenshot from 2024-11-28 12-24-57Start an RAG API Server 
-
-Use the API to ask a chemistry question and get an answer and API server log that shows the user question, vector search results, and the updated prompt 
-
-Create a Web-based Chatbot 
-
-The publicly accessible chatbot URL and a screenshot of the chatbot UI showing a relevant conversation 
-
-Screenshot from 2024-11-28 16-11-25 
-
-Create a Discord Bot 
-
-An invite link to the Discord server that is hosting the bot and a screenshot of the Discord bot showing a relevant conversation 
-
- 
-
- 
-
- 
-
- 
-
-## Project - 3 
-
-### Fine-Tune the Llama Model 
-
-#### Create the Training Dataset 
-
-The politics.txt file you created with news headlines. The finetune.json dataset you created for the Alpaca template. A link to the public Hugging Face Dataset repo for your finetune.json data file 
-
-Public Hugging Face Dataset repo: https://huggingface.co/datasets/suman50/Fine_tune_dataset 
-
-Fine-tune the Model 
-
-A shared link to the notebook you used to fine-tune the LLM. The Hugging Face model repo for the final product. 
-
-Co lab Notebook link: https://colab.research.google.com/#fileId=https%3A//huggingface.co/juntaoyuan/validate_chemistry_question/blob/main/Llama_3_1_8b_%2B_Unsloth_finetuning.ipynb 
-
- 
-
- Run an inference API server for the fine-tuned model 
-
-The publicly accessible chatbot URL. A screenshot of the chatbot UI showing a relevant conversation 
-
-url: https://0xa9f7efaa07879d7e3276e8626852de6758bd0321.gaianet.network Screenshot from 2024-12-02 15-04-23 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
+## Conclusion
+This project demonstrates how to develop a modular, intelligent conversational agent using Meta’s LLaMA model. It spans from deployment to customization, using cutting-edge tools like WasmEdge, Qdrant, and Hugging Face, with hands-on examples of prompt engineering, RAG, and fine-tuning. The approach is scalable, resource-efficient, and adaptable to diverse domains and interfaces.
