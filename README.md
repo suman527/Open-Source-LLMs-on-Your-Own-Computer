@@ -47,15 +47,6 @@ Hosted the fine-tuned model on Hugging Face and deployed a public inference API.
 
 Demonstrated the effectiveness of fine-tuning through chatbot screenshots and accessible endpoints.
 
- ## Deliverables and Artifacts
-
-## Component	Link / Info
-🗃️ Dataset (Alpaca-style)	Hugging Face Dataset
-📓 Fine-tuning Notebook	Colab Link
-🌐 Hosted Fine-Tuned Chatbot	Chatbot URL
-📦 Chemistry Vector Snapshot	Included in repo (/snapshots/chemistry.zip)
-🤖 Discord Bot	Invite link and screenshots included in documentation
-
  ## Key Features
 ✅ Lightweight deployment using WasmEdge and GGUF quantized LLaMA models.
 
@@ -67,14 +58,6 @@ Demonstrated the effectiveness of fine-tuning through chatbot screenshots and ac
 
 ✅ API-first design to facilitate flexible front-end integrations.
 
-## Use Cases
-💬 Education bots that can answer science, history, and current affairs questions.
-
-🧪 Research assistants for querying domain-specific databases.
-
-📰 News summarizers or commentators trained on political data.
-
-💻 Offline/local chatbots for low-infrastructure environments (schools, rural areas).
 
 ## Conclusion
 This project demonstrates how to develop a modular, intelligent conversational agent using Meta’s LLaMA model. It spans from deployment to customization, using cutting-edge tools like WasmEdge, Qdrant, and Hugging Face, with hands-on examples of prompt engineering, RAG, and fine-tuning. The approach is scalable, resource-efficient, and adaptable to diverse domains and interfaces.
