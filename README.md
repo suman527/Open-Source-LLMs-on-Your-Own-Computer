@@ -1,4 +1,4 @@
-# suman527-Open-Source-LLMs-on-Your-Own-Computer
+# Open-Source-LLMs-on-Your-Own-Computer
 
 ## Project 1 : Chatbot with Llama 
 
