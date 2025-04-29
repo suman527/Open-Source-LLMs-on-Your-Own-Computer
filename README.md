@@ -24,7 +24,7 @@ llama-simple.wasm file (the WebAssembly runtime file for inference).
 
 ### Step-by-Step Guide 
 
-1. Pull WasmEdge Docker Image 
+#### 1. Pull WasmEdge Docker Image 
 
 bash 
 
@@ -37,7 +37,7 @@ This pulls the official WasmEdge Docker image.
 
  
 
-2. Prepare Necessary Files 
+#### 2. Prepare Necessary Files 
 
 Ensure you have: 
 
@@ -60,7 +60,7 @@ CopyEdit
 
  
 
-3. Run Docker Container with Mounted Volume 
+#### 3. Run Docker Container with Mounted Volume 
 
 Use the following command to start a container and mount your llama-models folder inside: 
 
@@ -75,7 +75,7 @@ docker run -it --rm \
   wasmedge/wasmedge bash 
  
 
-### Explanation: 
+#### Explanation: 
 
 -v ~/llama-models:/root/llama-models mounts the folder inside the container. 
 
@@ -87,7 +87,7 @@ You will now be inside the container's bash shell.
 
  
 
-4. Install Additional Tools (if needed) 
+#### 4. Install Additional Tools (if needed) 
 
 Inside the container, if not pre-installed, install WasmEdge CLI tools: 
 
@@ -101,7 +101,7 @@ apt install -y wasmedge
 (Usually, the wasmedge CLI is already available in the image.) 
 
 
-5. Run the Model using WasmEdge 
+#### 5. Run the Model using WasmEdge 
 
 Inside the container, execute: 
 
@@ -129,7 +129,7 @@ llama-simple.wasm — The WebAssembly runtime app.
 
 --prompt — The input text to generate a response. 
 
-6. View the Output 
+#### 6. View the Output 
 
 After running the command, the model will process your prompt and output a detailed generated text. 
 
