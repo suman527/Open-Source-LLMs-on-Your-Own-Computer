@@ -33,9 +33,9 @@ We customized the chatbot for the politics domain by fine-tuning the LLaMA model
 
 ✅ Created dataset: politics.txt, finetune.json
 
-✅ Uploaded dataset to Hugging Face: suman50/Fine_tune_dataset
+✅ Uploaded dataset to Hugging Face: https://huggingface.co/datasets/suman50/Fine_tune_dataset
 
-✅ Fine-tuned the model using Unsloth in Colab: Notebook Link
+✅ Fine-tuned the model using Unsloth in Colab: https://colab.research.google.com/#fileId=https%3A//huggingface.co/juntaoyuan/validate_chemistry_question/blob/main/Llama_3_1_8b_%2B_Unsloth_finetuning.ipynb
 
 ✅ Hosted the fine-tuned model with inference API + UI
 
