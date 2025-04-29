@@ -6,44 +6,38 @@ This repository presents an end-to-end pipeline for developing a Conversational 
  ## Project Overview
 The project is divided into three major phases:
 
-## Project 1: LLaMA Deployment using WasmEdge and Docker
-Focus: Model setup, prompt-based inference, and integration with chatbot UI.
+## Project 1: Deploying the LLaMA Model with WasmEdge
+We set up the Meta-LLaMA-3.1-8B-Instruct-Q5_K_M.gguf model inside a Docker container using WasmEdge to enable lightweight, efficient, and portable inference via WebAssembly.
 
-Deployed the Meta-LLaMA-3.1-8B-Instruct-Q5_K_M.gguf model using a WebAssembly runtime (llama-simple.wasm) inside a Docker container powered by WasmEdge.
+✅ Pulled WasmEdge Docker image
 
-Ran inference with a command-line prompt to test text generation.
+✅ Mounted model and runtime files
 
-Configured LobeChat to act as a UI frontend using an OpenAI-compatible local API endpoint.
+✅ Ran inference with llama-simple.wasm
 
-Enabled real-time interaction with the model through a minimalistic chat interface.
+✅ Enabled prompt-based completion generation
 
-Key tools: Docker, WasmEdge, llama-simple.wasm, Meta-LLaMA-3.1-8B, LobeChat.
+## Project 2: Enhancing the Chatbot with Retrieval-Augmented Generation (RAG)
+We improved chatbot intelligence by integrating Qdrant (a vector database) to support Retrieval-Augmented Generation (RAG), allowing the model to utilize external structured knowledge for domain-specific queries.
 
-## Project 2: Augmenting the Chatbot with External Knowledge (RAG)
-Focus: Integrating a vector database to enhance factual accuracy.
+✅ Created a vector store from chemistry.csv
 
-Created a vector store using Qdrant, and ingested external domain-specific data (e.g., chemistry concepts).
+✅ Queried the vector DB using an API
 
-Converted structured data (chemistry.csv) into embeddings and stored it in a vector database for similarity search.
+✅ Connected API responses to the chatbot UI
 
-Developed a RAG API server to respond to user questions by combining retrieval and generation.
+✅ Deployed the RAG-enhanced chatbot on the web and Discord
 
-Built a public-facing web chatbot and a Discord bot, both capable of producing informed answers using the vector knowledge base.
+## Project 3: Fine-Tuning LLaMA for Political News
+We customized the chatbot for the politics domain by fine-tuning the LLaMA model using news headline data. This demonstrated the model's adaptability to specific verticals.
 
-Submitted screenshots of conversations and vector collection API results for validation.
+✅ Created dataset: politics.txt, finetune.json
 
-## Project 3: Fine-Tuning the Model with Domain-Specific Data
-Focus: Specializing the chatbot for political news content.
+✅ Uploaded dataset to Hugging Face: suman50/Fine_tune_dataset
 
-Curated a training dataset (politics.txt) with political news headlines.
+✅ Fine-tuned the model using Unsloth in Colab: Notebook Link
 
-Formatted the dataset into Alpaca-style JSON (finetune.json) for instruction tuning.
-
-Uploaded the dataset to Hugging Face Datasets.
-
-Fine-tuned the model on Google Colab using the Unsloth framework and shared the training notebook.
-
-Hosted the fine-tuned model on Hugging Face and deployed a public inference API.
+✅ Hosted the fine-tuned model with inference API + UI
 
 Demonstrated the effectiveness of fine-tuning through chatbot screenshots and accessible endpoints.
 
@@ -57,6 +51,23 @@ Demonstrated the effectiveness of fine-tuning through chatbot screenshots and ac
 ✅ Fine-tuned model trained on real-world political datasets for improved relevance.
 
 ✅ API-first design to facilitate flexible front-end integrations.
+
+## Tech Stack
+Meta LLaMA 3.1 8B Instruct (GGUF)
+
+WasmEdge
+
+Docker
+
+Qdrant (Vector DB)
+
+Python FastAPI for RAG API
+
+LobeChat / Chatbot UI
+
+Discord Bot Integration
+
+Unsloth Fine-Tuning
 
 
 ## Conclusion
