@@ -135,7 +135,7 @@ After running the command, the model will process your prompt and output a detai
 
 Example output: 
 
-"20th-century physics. The 'father of the atom bomb,' Oppenheimer led the secret research project known as the Manhattan Project..." 
+"Robert Oppenheimer's most important achievement is" 
 
  
 
@@ -163,7 +163,7 @@ Ask the next question in the conversation. Write it down as a complete command. 
 
 ## Create a Chatbot 
 
-Change the “system prompt” for the chatbot-ui to “You are a tour guide for Western tourists in Japan.” Then, submit the screenshot. Ask a few questions about Japan in chatbot-ui. Submit the screenshots. Configure LobeChat to use the http://localhost:8080/v1 as an "OpenAI API proxy address". Submit the screenshot. Chat on LobeChat. Submit the screenshot. 
+Change the “system prompt” for the chatbot-ui to “What is Mercury” Then, submit the screenshot. Ask a few questions about Japan in chatbot-ui. Submit the screenshots. Configure LobeChat to use the http://localhost:8080/v1 as an "OpenAI API proxy address". Submit the screenshot. Chat on LobeChat. Submit the screenshot. 
 
  
 
