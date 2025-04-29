@@ -13,7 +13,7 @@ Directory After Downloading: After downloading the model, you can use the ls -al
 
 A screenshot of the downloaded local files using ls -al . 
 
- 
+ https://imagekit.io/tools/asset-public-link?detail=%7B%22name%22%3A%221st.png%22%2C%22type%22%3A%22image%2Fpng%22%2C%22signedurl_expire%22%3A%222028-04-28T06%3A35%3A17.834Z%22%2C%22signedUrl%22%3A%22https%3A%2F%2Fmedia-hosting.imagekit.io%2F8c53c32e4e114a76%2F1st.png%3FExpires%3D1840516518%26Key-Pair-Id%3DK2ZIVPTIP2VGHC%26Signature%3DE0wCV6D-aeeKIZOJzw64BDyipHIK5bwYND1mSPtMrOOIV40kj8tCZSEGBFGUaEw4DFT68zmjAuBpQSC3~i5epRj8VKsIWRhpsUa4PSsQB8efP7C804BkX1TN3thy5GbLGkeOnYoHdgZLhY-0yNBWM-axjnrU-bDPt6VYJHD0ESgI6PI~sseQlAUPV1hMbsgYgoWs6CNJRw2-4tfQY1WNq-aRVjBuaguhpHf6fofcoqjcWNU~42d4KHrbZ2eTdE9LjXTEbJ415qzypQpsZwYvvVectvIHmm59b76xFZ7EuU9cMy9mdt-zPpif7x96v8KUR1MgYmlC5LrAvz~5g2ZuZw__%22%7D
 
 Ask a different question in the conversation and A screenshot of the output of the answer.. 
 
