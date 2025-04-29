@@ -32,7 +32,6 @@ CopyEdit
 
 docker pull wasmedge/wasmedge 
  
-
 This pulls the official WasmEdge Docker image. 
 
  
@@ -143,12 +142,9 @@ Example output:
 
 Directory After Downloading: After downloading the model, you can use the ls -al command to list the downloaded files on your local system. This will show all necessary files for setting up the model. 
 
-A screenshot of the downloaded local files using ls -al . 
-
  
 Ask a different question in the conversation and A screenshot of the output of the answer.. 
 
- 
  
 
 Use the Chat Template to Carry a Conversation 
@@ -157,15 +153,9 @@ Ask the next question in the conversation. Write it down as a complete command. 
 
   
 
- 
-
- 
-
 ## Create a Chatbot 
 
 Change the “system prompt” for the chatbot-ui to “What is Mercury” Then, submit the screenshot. Ask a few questions about Japan in chatbot-ui. Submit the screenshots. Configure LobeChat to use the http://localhost:8080/v1 as an "OpenAI API proxy address". Submit the screenshot. Chat on LobeChat. Submit the screenshot. 
-
- 
 
  
 
