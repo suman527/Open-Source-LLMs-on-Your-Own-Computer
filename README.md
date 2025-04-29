@@ -75,7 +75,7 @@ docker run -it --rm \
   wasmedge/wasmedge bash 
  
 
-###Explanation: 
+### Explanation: 
 
 -v ~/llama-models:/root/llama-models mounts the folder inside the container. 
 
@@ -98,10 +98,8 @@ CopyEdit
 apt update 
 apt install -y wasmedge 
  
-
 (Usually, the wasmedge CLI is already available in the image.) 
 
- 
 
 5. Run the Model using WasmEdge 
 
@@ -148,11 +146,9 @@ Directory After Downloading: After downloading the model, you can use the ls -al
 A screenshot of the downloaded local files using ls -al . 
 
  
-
 Ask a different question in the conversation and A screenshot of the output of the answer.. 
 
-  
-
+ 
  
 
 Use the Chat Template to Carry a Conversation 
@@ -165,7 +161,7 @@ Ask the next question in the conversation. Write it down as a complete command. 
 
  
 
-Create a Chatbot 
+## Create a Chatbot 
 
 Change the “system prompt” for the chatbot-ui to “You are a tour guide for Western tourists in Japan.” Then, submit the screenshot. Ask a few questions about Japan in chatbot-ui. Submit the screenshots. Configure LobeChat to use the http://localhost:8080/v1 as an "OpenAI API proxy address". Submit the screenshot. Chat on LobeChat. Submit the screenshot. 
 
@@ -173,11 +169,11 @@ Change the “system prompt” for the chatbot-ui to “You are a tour guide for
 
  
 
-##Project – 2  
+## Project – 2  
 
-Add Knowledge to the Chatbot 
+### Add Knowledge to the Chatbot 
 
-Create a Vector Database for External Knowledge 
+#### Create a Vector Database for External Knowledge 
 
 The output of curl 'http://localhost:6333/collections/chemistry' and a zip file containing the snapshot from the chemistry collection. 
 
@@ -207,11 +203,11 @@ An invite link to the Discord server that is hosting the bot and a screenshot of
 
  
 
-##Project - 3 
+## Project - 3 
 
-Fine-Tune the Llama Model 
+### Fine-Tune the Llama Model 
 
-Create the Training Dataset 
+#### Create the Training Dataset 
 
 The politics.txt file you created with news headlines. The finetune.json dataset you created for the Alpaca template. A link to the public Hugging Face Dataset repo for your finetune.json data file 
 
